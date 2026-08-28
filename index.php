@@ -8,7 +8,11 @@
 <tr><th>ID</th><th>Nome</th><th>Preço</th><th>Estoque</th><th>Ações</th></tr>
 <?php
 $resultado = $conexao->query(
-"SELECT id, nome, preco, estoque FROM produtos ORDER BY id DESC");
+"SELECT proutos.id, proutos.nome, produos.preco, produtos.estoque, categorias.nome AS categoria 
+ FROM produtos 
+ JOIN categorias 
+ ON produtos.categoria_id = categorias.id
+ ORDER BY produtos.id DESC");
 while ($produto = $resultado->fetch_assoc()):
 ?>
 <tr>
